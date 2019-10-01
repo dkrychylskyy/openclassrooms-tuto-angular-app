@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { resolve } from 'path';
+import { reject } from 'q';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +11,19 @@ export class AppComponent {
   title = 'Angular Openclassrooms App';
   isAuth = false;
 
+  lastUpdate = new Promise((resolve, reject) => {
+    const date = new Date();
+    setTimeout(
+      () => {
+        resolve(date);
+      }, 3000
+    );
+  });
+
   appareils = [
     {
       name : "Machin à lavé",
-      status : 'éteint'
+      status : 'allumé'
     },
     {
       name : "Télévision",
